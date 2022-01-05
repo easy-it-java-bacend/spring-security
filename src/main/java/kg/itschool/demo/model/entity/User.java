@@ -7,9 +7,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Entity
@@ -22,10 +22,10 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column (name = "id", nullable = false,unique = true)
+    @Column(name = "id", nullable = false, unique = true)
     Long id;
 
-    @Column (name = "first_name", nullable = false)
+    @Column(name = "first_name", nullable = false)
     String firstName;
 
     @Column(name = "last_name", nullable = false)
@@ -44,13 +44,16 @@ public class User implements UserDetails {
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     List<Account> account;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
     Role role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority(role.name()));
+        return role.getAuthorities()
+                .stream()
+                .map(authority -> new SimpleGrantedAuthority(authority.name()))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -70,6 +73,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
