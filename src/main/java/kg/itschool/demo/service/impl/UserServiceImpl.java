@@ -1,4 +1,4 @@
-package kg.itschool.demo.service;
+package kg.itschool.demo.service.impl;
 
 import kg.itschool.demo.mapper.UserMapper;
 import kg.itschool.demo.model.dto.UserDto;
@@ -6,6 +6,7 @@ import kg.itschool.demo.model.entity.Role;
 import kg.itschool.demo.model.entity.User;
 import kg.itschool.demo.model.request.CreateUserRequest;
 import kg.itschool.demo.repository.UserRepository;
+import kg.itschool.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

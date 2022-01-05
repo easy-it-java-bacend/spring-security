@@ -18,4 +18,8 @@ public enum Authority {
     TRANSACTION_CREATE,
     TRANSACTION_DELETE,
 
+    ROLE_CREATE,
+    PERMISSIONS_READ,
+
+    GUEST_READ
 }

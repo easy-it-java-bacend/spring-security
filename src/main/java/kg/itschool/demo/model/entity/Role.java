@@ -16,6 +16,7 @@ import java.util.List;
 public class Role {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     Long id;
 
@@ -23,6 +24,6 @@ public class Role {
     String roleName;
 
     @Enumerated(EnumType.STRING)
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     List<Authority> authorities;
 }
