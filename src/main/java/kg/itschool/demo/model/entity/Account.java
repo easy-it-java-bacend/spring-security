@@ -1,16 +1,22 @@
 package kg.itschool.demo.model.entity;
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
+import org.springframework.data.jpa.domain.AbstractAuditable;
+
 import javax.persistence.*;
 import java.util.List;
 
+@Data
 @Entity
+@NoArgsConstructor
 @Table(name = "tb_account")
-public class Account {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false,unique = true)
-    Long id;
+@EqualsAndHashCode(callSuper = true)
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class Account extends AbstractAuditable<User, Long> {
 
     @Column(name = "account_name", nullable = false)
     String accountName;

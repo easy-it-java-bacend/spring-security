@@ -1,7 +1,5 @@
 package kg.itschool.demo.model.entity;
 
-import javax.persistence.Entity;
-
 public enum Authority {
 
     USER_READ,
