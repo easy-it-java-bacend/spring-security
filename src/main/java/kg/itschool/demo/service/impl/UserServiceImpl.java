@@ -8,9 +8,13 @@ import kg.itschool.demo.model.request.CreateUserRequest;
 import kg.itschool.demo.repository.UserRepository;
 import kg.itschool.demo.service.AccountService;
 import kg.itschool.demo.service.UserService;
+<<<<<<< HEAD
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+=======
+import lombok.RequiredArgsConstructor;
+>>>>>>> d08f0d3ab3b8d323ef01afdb15ec56b6c5a24530
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,6 +24,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 
 @Service
+<<<<<<< HEAD
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -28,6 +33,13 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     private PasswordEncoder passwordEncoder;
+=======
+@RequiredArgsConstructor
+public class UserServiceImpl implements UserService {
+
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+>>>>>>> d08f0d3ab3b8d323ef01afdb15ec56b6c5a24530
 
     private AccountService accountService;
 
