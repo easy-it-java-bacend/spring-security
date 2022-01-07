@@ -1,9 +1,17 @@
 package kg.itschool.demo.model.entity;
 
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = "tb_account")
 public class Account {
 
