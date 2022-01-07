@@ -8,22 +8,27 @@ import kg.itschool.demo.model.request.CreateUserRequest;
 import kg.itschool.demo.repository.UserRepository;
 import kg.itschool.demo.service.AccountService;
 import kg.itschool.demo.service.UserService;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+
 @Service
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
     //ORM -> Object Relational Mapping
-    @Autowired
     private UserRepository userRepository;
 
-    @Autowired
     private PasswordEncoder passwordEncoder;
-    @Autowired
+
     private AccountService accountService;
 
     @Override
@@ -60,7 +65,7 @@ public class UserServiceImpl implements UserService {
                 .userDto(userDto)
                 .transactions(null)
                 .notes("asd")
-                .availableMoney(0L)
+                .availableMoney(BigDecimal.ZERO)
                 .accountName("asd")
                 .build();
 

@@ -1,21 +1,20 @@
-package kg.itschool.demo.model.dto;
+package kg.itschool.demo.model.request;
 
+import kg.itschool.demo.model.dto.TransactionDto;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
 import java.util.List;
-
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class AccountDto {
-    Long id;
+@Builder
+public class CreateAccountRequest {
     String accountName;
     String notes;
     BigDecimal availableMoney;
-    UserDto userDto;
+    Long userId;
     List<TransactionDto> transactions;
 }

@@ -1,12 +1,21 @@
 package kg.itschool.demo.model.entity;
 
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 
+@Data
 @Entity
 @Table(name = "tb_transaction")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Transaction {
 
     @Id
@@ -14,6 +23,7 @@ public class Transaction {
     @Column(name = "id", nullable = false,unique = true)
     Long id;
 
+    @CreationTimestamp
     @Column(name = "transaction_date", nullable = false)
     LocalDateTime transactionDate;
 
@@ -28,9 +38,9 @@ public class Transaction {
 
     @ManyToOne
     @JoinColumn(name = "account_to_id", referencedColumnName = "id")
-    Account accountToId;
+    Account accountTo;
 
     @ManyToOne
     @JoinColumn(name = "account_from_id", referencedColumnName = "id")
-    Account accountFromId;
+    Account accountFrom;
 }

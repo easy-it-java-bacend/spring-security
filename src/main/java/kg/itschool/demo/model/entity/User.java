@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @Table(name = "tb_user")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class User extends AbstractAuditable<User, Long> implements UserDetails {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -50,7 +50,7 @@ public class User extends AbstractAuditable<User, Long> implements UserDetails {
     Role role;
 
     @Column(name = "is_active", nullable = false)
-    Boolean IsActive;
+    Boolean isActive;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -27,11 +28,11 @@ public class Account {
     String notes;
 
     @Column(name = "available_money", nullable = false)
-    Long availableMoney;
+    BigDecimal availableMoney;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    User  user;
+    User user;
 
     @OneToMany
     @JoinColumn(name = "transaction_id", referencedColumnName = "id")
